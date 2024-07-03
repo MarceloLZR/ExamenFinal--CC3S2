@@ -221,7 +221,7 @@ Esto es lo que acabas de completar:
 
 Luego iniciamos un contenedor para comprobar que nuestras aplicaciones se ejecutan correctamente:
 
-![alt text](image-37.png)
+![alt text](images/image-37.png)
 
 ¿Lo que acaba de suceder? Creamos dos archivos: el código de nuestra aplicación (index.js) es un simple fragmento de código javascript que imprime un mensaje. Y el Dockerfile son las instrucciones para que el motor Docker cree nuestro contenedor personalizado. Este Dockerfile hace lo siguiente:
 
