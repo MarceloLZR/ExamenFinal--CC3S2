@@ -1,0 +1,28 @@
+version: '3'  # Versión de la especificación de Docker Compose
+
+services:
+  app:
+    build: .  # Construye la imagen del contenedor utilizando el Dockerfile en el directorio actual
+    container_name: weather-alert-app  # Nombre del contenedor para la aplicación
+    networks:
+      - weather-network  # Conecta este servicio a la red 'weather-network'
+
+  database:
+    image: postgres:13  # Utiliza la imagen oficial de PostgreSQL versión 13
+    container_name: weather-db  # Nombre del contenedor para la base de datos
+    environment:
+      POSTGRES_USER: user  # Variable de entorno: usuario de PostgreSQL
+      POSTGRES_PASSWORD: password  # Variable de entorno: contraseña de PostgreSQL
+      POSTGRES_DB: weather_db  # Variable de entorno: nombre de la base de datos
+    networks:
+      - weather-network  # Conecta este servicio a la red 'weather-network'
+    volumes:
+      - db-data:/var/lib/postgresql/data  # Monta el volumen 'db-data' en el directorio de datos de PostgreSQL
+
+networks:
+  weather-network:
+    driver: bridge  # Configura 'weather-network' como una red de tipo bridge
+
+volumes:
+  db-data:
+    driver: local  # Define el volumen 'db-data' como un volumen local persistente
