@@ -1,0 +1,11 @@
+FROM openjdk:21
+WORKDIR /app
+
+# Copiar toda la estructura de archivos Java
+COPY src/main/java/org/example /app
+
+# Compilar los archivos Java
+RUN javac GameService.java MapService.java PlayerService.java TowerService.java WaveService.java
+
+# Comando por defecto al ejecutar el contenedor
+CMD ["java", "org.example.TowerService"]

@@ -1,0 +1,5 @@
+FROM openjdk:21
+WORKDIR /app
+COPY src/main/java/org/example /app
+RUN javac GameService.java PlayerService.java TowerService.java WaveService.java MapService.java
+CMD ["java", "org.example.MapService"]
